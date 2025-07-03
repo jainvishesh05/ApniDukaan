@@ -6,24 +6,26 @@ __pycache__/
 *.egg
 *.pyo
 
-# Virtual environment
+# Virtual environments
 env/
 venv/
 textutilvenv/
 apnidukaanvenv/
-
 ENV/
 *.env
 
 # Django
 *.log
 *.pot
-*.pyc
 *.sqlite3
 db.sqlite3
 media/
+static/
 staticfiles/
-*.pyc
+
+# Ignore migrations except __init__.py
+**/migrations/
+!*/migrations/__init__.py
 
 # IDEs
 .vscode/
@@ -38,4 +40,5 @@ node_modules/
 build/
 dist/
 
+# Uploaded product images (already covered by media/, but fine to keep)
 apnidukaan/product_images/
