@@ -1,123 +1,290 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>apnidukaan</title>
+{% extends "shop/base.html" %}
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+{% block title %}apnidukaan{% endblock %}
 
-    <style>
-      .carousel-item img {
-        height: 50vh;
-        object-fit: cover;
-      }
-    </style>
-  </head>
-  <body>
+{% block extra_head %}
+<style>
+  .featured-product-card {
+    min-height: 420px;
+    max-height: 420px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .featured-product-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    width: 100%;
+    background: #f8f8f8;
+  }
+  .featured-product-card .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 120px;
+    max-height: 120px;
+    overflow: hidden;
+  }
+  .featured-product-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .featured-product-card .card-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+  }
+  .featured-product-card .p-3.pt-0.mt-auto {
+    margin-top: auto !important;
+    padding-top: 0 !important;
+  }
+  .category-slider-card {
+    min-height: 170px;
+    max-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: stretch;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+  .category-slider-card .card-img-top {
+    height: 100px;
+    object-fit: cover;
+    width: 100%;
+    background: #f8f8f8;
+  }
+  .category-slider-card .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 40px;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0.5rem 0.75rem;
+  }
+  .category-slider-card .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+  .category-slider-card .card-text {
+    font-size: 0.85rem;
+    margin-bottom: 0;
+  }
+  /* Slideshow Section: Make carousel images taller and section more prominent */
+  #homeSlideshow .carousel-inner img {
+    height: 480px;
+    object-fit: cover;
+  }
+  #homeSlideshow {
+    margin-bottom: 2.5rem;
+  }
+</style>
+{% endblock %}
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand">apnidukaan</a>
-        <form class="d-flex">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-      </div>
-    </nav>
+{% block content %}
+  <!-- Hero Section -->
+  <section class="py-3 text-center bg-light">
+    <div class="container">
+      <h1 class="fw-bold" style="font-size:2rem;">Welcome to ApniDukaan</h1>
+      <p class="mb-3" style="font-size:1.1rem;">Your one-stop shop for the latest fashion, accessories, and more!</p>
+      <a href="#featured-products" class="btn btn-primary btn-md">Shop Now</a>
+    </div>
+  </section>
 
-    <!-- Carousel -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+  <!-- Slideshow Section (replaces promo banner) -->
+  <div class="container my-4">
+    <div id="homeSlideshow" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-          aria-current="true" aria-label="Slide 1"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-          aria-label="Slide 2"></button>
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-          aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#homeSlideshow" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#homeSlideshow" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#homeSlideshow" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#homeSlideshow" data-bs-slide-to="3" aria-label="Slide 4"></button>
       </div>
-
-      <div class="carousel-inner">
+      <div class="carousel-inner rounded">
         <div class="carousel-item active">
-          <img src="https://via.placeholder.com/1500x500?text=Welcome+to+ApniDukaan" class="d-block w-100" alt="Slide 1">
+          <img src="https://via.placeholder.com/1200x480?text=Big+Summer+Sale" class="d-block w-100" alt="Big Summer Sale">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Big Summer Sale</h5>
+            <p>Up to 50% off on selected items. Shop now!</p>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="https://via.placeholder.com/1500x500?text=Best+Deals+Everyday" class="d-block w-100" alt="Slide 2">
+          <img src="https://via.placeholder.com/1200x480?text=New+Arrivals" class="d-block w-100" alt="New Arrivals">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>New Arrivals</h5>
+            <p>Check out the latest trends in fashion.</p>
+          </div>
         </div>
         <div class="carousel-item">
-          <img src="https://via.placeholder.com/1500x500?text=Shop+Now" class="d-block w-100" alt="Slide 3">
+          <img src="https://via.placeholder.com/1200x480?text=Accessories+Bonanza" class="d-block w-100" alt="Accessories Bonanza">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Accessories Bonanza</h5>
+            <p>Complete your look with our exclusive accessories.</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="https://via.placeholder.com/1200x480?text=Festive+Collection" class="d-block w-100" alt="Festive Collection">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Festive Collection</h5>
+            <p>Celebrate in style with our festive picks.</p>
+          </div>
         </div>
       </div>
-
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <button class="carousel-control-prev" type="button" data-bs-target="#homeSlideshow" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
       </button>
-
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <button class="carousel-control-next" type="button" data-bs-target="#homeSlideshow" data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
       </button>
     </div>
+  </div>
 
-    <!-- Categories Section -->
-    <div class="container my-5">
-      <h2 class="mb-4">Explore Categories</h2>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/300x200?text=Ethnic+Wear" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Ethnic Wear</h5>
-              <p class="card-text">Stylish kurtis and sarees perfect for every occasion.</p>
+  <!-- Categories Section (Slider) -->
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">Shop by Category</h2>
+    <div class="d-flex align-items-center">
+      <!-- Left Arrow Button -->
+      <button class="btn btn-outline-primary me-2 d-none d-md-inline-flex" type="button" data-bs-target="#categoriesCarousel" data-bs-slide="prev" style="height: 60px; width: 32px;">
+        <span class="bi bi-chevron-left fs-5"></span>
+      </button>
+      <div class="flex-grow-1">
+        <div id="categoriesCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for chunk in category_chunks %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="row row-cols-1 row-cols-md-3 g-3">
+                {% for category in chunk %}
+                <div class="col">
+                  <div class="card h-100 d-flex flex-column category-slider-card">
+                    <img src="{% if category.category_image %}{{ category.category_image.url }}{% else %}https://via.placeholder.com/300x300?text=No+Image{% endif %}" class="card-img-top" alt="{{ category.category_name }}">
+                    <div class="card-body flex-grow-1">
+                      <h5 class="card-title">{{ category.category_name }}</h5>  
+                    </div>
+                    
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
             </div>
+            {% endfor %}
+            <!-- Add more carousel-item blocks for more categories if needed -->
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/300x200?text=Western+Wear" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Western Wear</h5>
-              <p class="card-text">Trendy tops, jeans, and dresses for daily wear.</p>
+      </div>
+      <!-- Right Arrow Button -->
+      <button class="btn btn-outline-primary ms-2 d-none d-md-inline-flex" type="button" data-bs-target="#categoriesCarousel" data-bs-slide="next" style="height: 60px; width: 32px;">
+        <span class="bi bi-chevron-right fs-5"></span>
+      </button>
+    </div>
+    <div class="text-center mt-3">
+      <a href="#" class="btn btn-outline-primary btn-sm">View All Categories</a>
+    </div>
+  </div>
+
+  <!-- Featured Products Section (Horizontal Slider) -->
+  <div class="container my-5 position-relative" id="featured-products">
+    <h2 class="mb-4 text-center">Featured Products</h2>
+    <div class="d-flex align-items-center">
+      <!-- Left Arrow Button -->
+      <button class="btn btn-outline-primary me-2 d-none d-md-inline-flex" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="prev" style="height: 100px; width: 40px;">
+        <span class="bi bi-chevron-left fs-3"></span>
+      </button>
+      <div class="flex-grow-1">
+        <div id="featuredProductsCarousel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            {% for chunk in product_chunks %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <div class="row row-cols-1 row-cols-md-4 g-4">
+                {% for product in chunk %}
+                <div class="col">
+                  <div class="card h-100 d-flex flex-column featured-product-card">
+                    <img src="{{ product.product_image.url }}" class="card-img-top" alt="{{ product.product_name }}" onerror="this.onerror=null;this.src='https://via.placeholder.com/300x300?text=No+Image';">
+                    <div class="card-body flex-grow-1">
+                      <h5 class="card-title">{{ product.product_name }}</h5>
+                      <p class="card-text">{{ product.product_description|truncatechars:80 }}</p>
+                      <p class="card-text fw-bold">₹{{ product.product_price }}</p>
+                      <div class="mb-2">
+                        <span class="text-muted small">(120 reviews)</span>
+                      </div>
+                    </div>
+                    <div class="p-3 pt-0 mt-auto">
+                      <a href="#" class="btn btn-primary w-100">Add to Cart</a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
             </div>
+            {% endfor %}
           </div>
         </div>
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/300x200?text=Accessories" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Accessories</h5>
-              <p class="card-text">Bags, jewellery, and more to complete your look.</p>
-            </div>
+      </div>
+      <!-- Right Arrow Button -->
+      <button class="btn btn-outline-primary ms-2 d-none d-md-inline-flex" type="button" data-bs-target="#featuredProductsCarousel" data-bs-slide="next" style="height: 100px; width: 40px;">
+        <span class="bi bi-chevron-right fs-3"></span>
+      </button>
+    </div>
+    <div class="text-center mt-4">
+      <a href="#" class="btn btn-outline-primary btn-lg">View More Products</a>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="container my-5">
+    <h2 class="mb-4 text-center">What Our Customers Say</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <div class="card testimonial-card p-3 h-100">
+          <div class="card-body">
+            <p class="card-text">"Amazing quality and fast delivery! Will shop again."</p>
+            <h6 class="card-title mb-0">- Priya S.</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card testimonial-card p-3 h-100">
+          <div class="card-body">
+            <p class="card-text">"Great variety and excellent customer service."</p>
+            <h6 class="card-title mb-0">- Rahul M.</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card testimonial-card p-3 h-100">
+          <div class="card-body">
+            <p class="card-text">"Loved the discounts and the easy checkout process!"</p>
+            <h6 class="card-title mb-0">- Anjali K.</h6>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Products Section -->
-    <div class="container my-5">
-      <h2 class="mb-4">Featured Products</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-        {% for i in "12345678" %}
-        <div class="col">
-          <div class="card h-100">
-            <img src="https://via.placeholder.com/300x300?text=Product+{{ i }}" class="card-img-top" alt="Product">
-            <div class="card-body">
-              <h5 class="card-title">Product {{ i }}</h5>
-              <p class="card-text">₹999</p>
-              <a href="#" class="btn btn-primary w-100">Add to Cart</a>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
+  <!-- Newsletter Signup -->
+  <div class="container my-5 newsletter-section p-5">
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-3 mb-md-0">
+        <h4 class="fw-bold">Stay Updated!</h4>
+        <p>Subscribe to our newsletter for latest offers and updates.</p>
       </div>
-      <div class="text-center mt-4">
-        <a href="#" class="btn btn-outline-primary btn-lg">View More Products</a>
+      <div class="col-md-6">
+        <form class="d-flex">
+          <input type="email" class="form-control me-2" placeholder="Enter your email" required>
+          <button class="btn btn-primary" type="submit">Subscribe</button>
+        </form>
       </div>
     </div>
+  </div>
+{% endblock %}
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
-</html>

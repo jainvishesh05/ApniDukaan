@@ -37,3 +37,9 @@ Thumbs.db
 node_modules/
 build/
 dist/
+
+# Ignore uploaded media
+product_images/
+apnidukaan/product_images/
+
+
