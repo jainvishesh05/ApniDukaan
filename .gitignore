@@ -6,24 +6,26 @@ __pycache__/
 *.egg
 *.pyo
 
-# Virtual environment
+# Virtual environments
 env/
 venv/
 textutilvenv/
 apnidukaanvenv/
-
 ENV/
 *.env
 
 # Django
 *.log
 *.pot
-*.pyc
 *.sqlite3
 db.sqlite3
 media/
+static/
 staticfiles/
-*.pyc
+
+# Ignore migrations except __init__.py
+**/migrations/
+!*/migrations/__init__.py
 
 # IDEs
 .vscode/
@@ -38,8 +40,13 @@ node_modules/
 build/
 dist/
 
+<<<<<<< HEAD
 # Ignore uploaded media
 product_images/
 apnidukaan/product_images/
 
 
+=======
+# Uploaded product images (already covered by media/, but fine to keep)
+apnidukaan/product_images/
+>>>>>>> 20274c2f0b62b17728405959c7eda5c6aee9e83f
