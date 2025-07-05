@@ -19,7 +19,6 @@ def home(request):
     category_chunks = chunk_products(category , 3)
     context = { 'product_chunks' : product_chunks , 
                 'category_chunks': category_chunks,
-                'all_categories': category,
                 }
     return render(request , 'shop/home.html' , context)
 
@@ -27,6 +26,7 @@ def cart(request):
     return render(request , 'shop/cart.html' )
 
 def aboutUs(request):
+    
     return render(request , 'shop/aboutUs.html' )
 
 def orders(request):
